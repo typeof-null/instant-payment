@@ -1,7 +1,7 @@
 import { Button, Typography, useTheme } from "@mui/material";
 import AccessibleForwardIcon from "@mui/icons-material/AccessibleForward";
 import KitesurfingIcon from "@mui/icons-material/Kitesurfing";
-import { Role } from "../../types";
+import { Role } from "../../../../shared/types";
 
 type Props = {
   onNextStep: (role: Role) => void;

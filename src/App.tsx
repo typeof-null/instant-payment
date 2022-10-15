@@ -2,6 +2,7 @@ import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useTheme } from "@mui/material";
 import Layout from "./shared/components/layout";
+import Login from "./pages/login";
 import Main from "./pages/main";
 
 function App() {
@@ -13,18 +14,12 @@ function App() {
       <Routes>
         {isAuth ? (
           <>
-            <Route
-              path="/"
-              element={
-                <main style={{ padding: "1rem" }}>
-                  <p>SEARCH </p>
-                </main>
-              }
-            />
+            <Route path="/" element={<Main />} />
+
           </>
         ) : (
           <>
-            <Route path="/" element={<Main />} />
+            <Route path="/" element={<Login />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </>
         )}

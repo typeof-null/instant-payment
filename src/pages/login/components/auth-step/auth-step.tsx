@@ -1,4 +1,5 @@
 import { MouseEvent, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Box,
   Button,
@@ -14,14 +15,13 @@ import {
 import { Role } from "../../types";
 import { ArrowBack, Visibility, VisibilityOff } from "@mui/icons-material";
 import { capitalizeFirstLetter } from "../../../../shared/utils/letters";
-import { useNavigate } from "react-router-dom";
 
 type Props = {
   role?: Role;
   onPrevStep: () => void;
 };
 
-function LoginStep({ role, onPrevStep }: Props) {
+function AuthStep({ role, onPrevStep }: Props) {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
 
@@ -149,4 +149,4 @@ function LoginStep({ role, onPrevStep }: Props) {
   );
 }
 
-export default LoginStep;
+export default AuthStep;

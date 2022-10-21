@@ -1,0 +1,64 @@
+{
+  "data": [
+    {
+      "category": "Office Visit",
+      "service": "Primary Care - New Patient"
+    },
+    {
+      "category": "Office Visit",
+      "service": "Primary Care - Existing Patient"
+    },
+    {
+      "category": "Office Visit",
+      "service": "Physical Checkup"
+    },
+    {
+      "category": "Office Visit",
+      "service": "Specialist Consultation"
+    },
+    {
+      "category": "Lab & Diagnostics",
+      "service": "General Health Panel"
+    },
+    {
+      "category": "Lab & Diagnostics",
+      "service": "Comprehensive Blood Panel"
+    },
+    {
+      "category": "Lab & Diagnostics",
+      "service": "Urinalysis"
+    },
+    {
+      "category": "Lab & Diagnostics",
+      "service": "Allergy Panel"
+    },
+    {
+      "category": "Procedures",
+      "service": "Colonoscopy - Preventive"
+    },
+    {
+      "category": "Procedures",
+      "service": "Colonoscopy - Diagnostic"
+    },
+    {
+      "category": "Procedures",
+      "service": "Anesthesia"
+    },
+    {
+      "category": "Procedures",
+      "service": "Vaccination"
+    },
+    {
+      "category": "Radiology",
+      "service": "Mammography"
+    },
+    {
+      "category": "Radiology",
+      "service": "MRI/MRE"
+    },
+    {
+      "category": "Radiology",
+      "service": "CT Scan"
+    }
+  ]
+}

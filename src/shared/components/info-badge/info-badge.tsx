@@ -5,7 +5,7 @@ import { SxType } from "../../types";
 type Props = {
   title: string;
   description: string;
-  sx: SxType;
+  sx?: SxType;
 };
 function InfoBadge({ title, description, sx }: Props) {
   return (

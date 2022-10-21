@@ -20,19 +20,33 @@ export const SPECIALITIES = {
   UROLOGICAL_SURGEON: "Urological Surgeon",
 };
 
+export const SERVICE_CATEGORIES = {
+  OFFICE_VISIT: "Office Visit",
+  LAB_AND_DIAGNOSTICS: "Lab & Diagnostics",
+  PROCEDURES: "Procedures",
+  RADIOLOGY: "Radiology",
+};
+
 export const SERVICES = {
+  // Office Visit
   PRIMARY_CARE_NEW_PATIENT: "Primary Care - New Patient",
   PRIMARY_CARE_EXISTING_PATIENT: "Primary Care - Existing Patient",
   PHYSICAL_CHECKUP: "Physical Checkup",
   SPECIALIST_CONSULTATION: "Specialist Consultation",
+
+  // Lab & Diagnostics
   GENERAL_HEALTH_PANEL: " General Health Panel",
   COMPREHENSIVE_BLOOD_PANEL: "Comprehensive Blood Panel",
   URINALYSIS: "Urinalysis",
   ALLERGY_PANEL: "Allergy Panel",
+
+  // Procedures
   COLONOSCOPY_PREVENTIVE: "Colonoscopy - Preventive",
   COLONOSCOPY_DIAGNOSTIC: "Colonoscopy - Diagnostic",
   ANESTHESIA: "Anesthesia",
   VACCINATION: "Vaccination",
+
+  // Radiology
   MAMMOGRAPHY: "Mammography",
   MRI_MRE: "MRI/MRE",
   CT_SCAN: "CT Scan",

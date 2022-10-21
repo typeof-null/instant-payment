@@ -1,0 +1,39 @@
+{
+    "data": [
+        {
+            "category": "Office Visit",
+            "service": [
+                "Primary Care - New Patient",
+                "Primary Care - Existing Patient",
+                "Physical Checkup",
+                "Specialist Consultation"
+            ]
+        },
+        {
+            "category": "Lab & Diagnostics",
+            "service": [
+                "General Health Panel",
+                "",
+                "Urinalysis",
+                "Allergy Panel"
+            ]
+        },
+        {
+            "category": "Procedures",
+            "service": [
+                "Colonoscopy - Preventive",
+                "Colonoscopy - Diagnostic",
+                "Anesthesia",
+                "Vaccination"
+            ]
+        },
+        {
+            "category": "Radiology",
+            "service": [
+                "Mammography",
+                "MRI/MRE",
+                "CT Scan"
+            ]
+        }
+    ]
+}

@@ -1,10 +1,13 @@
-import React from "react";
+import { useLocation } from "react-router-dom";
+import { Box, Typography } from "@mui/material";
 import ProviderBadge from "../../shared/components/provider-badge";
 import PatientBadge from "../../shared/components/patient-badge";
 import BankCard from "../../shared/components/bank-card";
 import InfoBadge from "../../shared/components/info-badge";
 
 function Payment() {
+  const { state } = useLocation();
+
   const user = JSON.parse(localStorage.getItem("user") as string);
   const provider = JSON.parse(localStorage.getItem("provider") as string);
 
@@ -21,13 +24,20 @@ function Payment() {
           margin: "0 auto",
         }}
       />
-      <InfoBadge
-        title="Please use this card for payment to provider."
-        description="Ask the provider to bill additional services to your insurance."
-        sx={{
-          margin: "45px auto 0",
-        }}
-      />
+      {state?.isProceed ? (
+        <Typography>
+          By accepting the payment you agree not to balance bill the patient.
+          Please bill payer for any additional services.
+        </Typography>
+      ) : (
+        <InfoBadge
+          title="Please use this card for payment to provider."
+          description="Ask the provider to bill additional services to your insurance."
+          sx={{
+            margin: "45px auto 0",
+          }}
+        />
+      )}
     </>
   );
 }

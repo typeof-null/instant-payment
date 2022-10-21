@@ -1,4 +1,11 @@
-import { CARD_TYPES, PAID, ROLES, SERVICES, SPECIALITIES } from "../constants";
+import {
+  CARD_TYPES,
+  PAID,
+  ROLES,
+  SERVICES,
+  SERVICE_CATEGORIES,
+  SPECIALITIES,
+} from "../constants";
 import { SxProps, Theme } from "@mui/material";
 
 /** PRODUCT TYPES **/
@@ -38,12 +45,19 @@ export type PaymentCard = {
   amount: string;
 };
 
-export type Paid = typeof PAID[keyof typeof PAID];
+export type ServiceOption = {
+  category: ServiceCategory;
+  service: Service;
+};
 
 export type Role = typeof ROLES[keyof typeof ROLES];
+
 export type Service = typeof SERVICES[keyof typeof SERVICES];
+export type ServiceCategory =
+  typeof SERVICE_CATEGORIES[keyof typeof SERVICE_CATEGORIES];
 export type Speciality = typeof SPECIALITIES[keyof typeof SPECIALITIES];
 
+export type Paid = typeof PAID[keyof typeof PAID];
 export type CardType = typeof CARD_TYPES[keyof typeof CARD_TYPES];
 
 /** THEME TYPES **/

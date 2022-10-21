@@ -3,7 +3,10 @@ import { createTheme } from "@mui/material/styles";
 /** A custom theme for app **/
 const theme = createTheme({
   typography: {
-    fontFamily: "Roboto",
+    fontFamily: "Roboto, sans-serif",
+    allVariants: {
+      letterSpacing: "0.6px",
+    },
   },
   palette: {
     primary: {
@@ -21,6 +24,9 @@ const theme = createTheme({
       primary: "#515151",
       secondary: "#2c0777",
       disabled: "#A0A0A0",
+    },
+    grey: {
+      A200: "#B6B6B6", // placeholder color
     },
   },
   spacing: (factor: number = 1) => `${0.5 * factor}rem`, // 0.5 * 2rem = 1rem = 16px

@@ -1,0 +1,56 @@
+{
+  "data": [
+    {
+      "date": "Sep 01, 2022",
+      "service": [
+        {
+          "name": "Office Visit - Est (99213)",
+          "amount": "130.00",
+          "paid": "Full"
+        },
+        {
+          "name": "Compr Lab Panel (80053)",
+          "amount": "8.99",
+          "paid": "Full"
+        },
+        {
+          "name": "Chest X-Ray (71045)",
+          "amount": "60.00",
+          "paid": "Dep",
+          "actions": "File"
+        },
+        {
+          "name": "Urinalysis (81001)",
+          "amount": "10.00",
+          "paid": "Dep",
+          "actions": "File"
+        }
+      ]
+    },
+    {
+      "date": "Aug 15, 2022",
+      "service": [
+        {
+          "name": "Office Visit - Est (99213)",
+          "amount": "130.00",
+          "paid": "Full"
+        }
+      ]
+    },
+    {
+      "date": "Aug 03 2022",
+      "service": [
+        {
+          "name": "Office Visit - New (99203)",
+          "amount": "150.00",
+          "paid": "Full"
+        },
+        {
+          "name": "Compr Lab Panel (80053)",
+          "amount": "8.99",
+          "paid": "Full"
+        }
+      ]
+    }
+  ]
+}

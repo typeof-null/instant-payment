@@ -39,13 +39,17 @@ export const SERVICES = {
 };
 
 export const ROLES = {
-  PATIENT: "PATIENT",
-  PROVIDER: "PROVIDER",
-  PAYER: "PAYER",
+  PATIENT: "patient",
+  PROVIDER: "provider",
+  PAYER: "payer",
 };
 
 export const PAID = {
-  FULL: "full",
-  DEP: "dep",
+  FULL: "Full",
+  DEP: "Dep",
 };
 
+export const CARD_TYPES = {
+  VISA: "visa",
+  MASTER_CARD: "master card",
+};

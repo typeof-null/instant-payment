@@ -1,5 +1,7 @@
-import { PAID, ROLES, SERVICES, SPECIALITIES } from "../constants";
+import { CARD_TYPES, PAID, ROLES, SERVICES, SPECIALITIES } from "../constants";
+import { SxProps, Theme } from "@mui/material";
 
+/** PRODUCT TYPES **/
 export type Patient = {
   name: string;
   date: string; // dob
@@ -10,7 +12,7 @@ export type Patient = {
 };
 export type Provider = {
   name: string;
-  specialty: string; // Primary Care Physician
+  speciality: string; // Primary Care Physician
   address: string;
   distance: string; // 2 miles
   rate: string; // $119.50
@@ -18,12 +20,15 @@ export type Provider = {
 };
 export type Payer = {};
 
+export type VisitService = {
+  name: string;
+  paid?: Paid; // full | dep
+  amount: number;
+  actions: string; // file
+};
 export type Visit = {
   date: string;
-  service: string;
-  amount: string;
-  paid?: string; // fill | dep
-  actions: string; // file
+  service: VisitService[];
 };
 
 export type PaymentCard = {
@@ -36,7 +41,10 @@ export type PaymentCard = {
 export type Paid = typeof PAID[keyof typeof PAID];
 
 export type Role = typeof ROLES[keyof typeof ROLES];
-
 export type Service = typeof SERVICES[keyof typeof SERVICES];
-
 export type Speciality = typeof SPECIALITIES[keyof typeof SPECIALITIES];
+
+export type CardType = typeof CARD_TYPES[keyof typeof CARD_TYPES];
+
+/** THEME TYPES **/
+export type SxType = SxProps<Theme>;

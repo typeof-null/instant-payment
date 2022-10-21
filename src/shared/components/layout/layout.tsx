@@ -1,23 +1,31 @@
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 import Header from "./components/header";
 import Footer from "./components/footer";
+import { Box } from "@mui/material";
 
 type Props = {
   children: ReactNode;
 };
 function Layout({ children }: Props) {
   return (
-    <div>
+    <>
       <Header />
-      <main
+      <Box
+        component="main"
+        display="flex"
+        alignItems="flex-start"
+        flexDirection="column"
         style={{
           minHeight: "calc(85vh)",
+          width: "60%",
+          margin: "0 auto",
+          padding: "20px",
         }}
       >
         {children}
-      </main>
+      </Box>
       <Footer />
-    </div>
+    </>
   );
 }
 

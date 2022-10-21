@@ -12,9 +12,10 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { Role } from "../../types";
 import { ArrowBack, Visibility, VisibilityOff } from "@mui/icons-material";
 import { capitalizeFirstLetter } from "../../../../shared/utils/letters";
+import { Role } from "../../../../shared/types";
+import { FormEvent } from "react";
 
 type Props = {
   role?: Role;
@@ -25,24 +26,29 @@ function AuthStep({ role, onPrevStep }: Props) {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleChange = (e: any) => {
-    console.log(e, "change");
-  };
-  const handleSubmit = (e: any) => {
-    const [username, _, password] = e.target;
+  const handleChange = () => {};
+  const handleSubmit = (e: FormEvent) => {
+    const [username, _, password] = e.target as unknown as HTMLInputElement[];
     e.preventDefault();
 
-    console.log(username.value, "username");
-    console.log(password.value, "password");
-
-    localStorage.setItem(
-      "user",
-      JSON.stringify({ username: username.value, password: password.value })
-    );
-
-    setTimeout(() => {
-      navigate(0);
-    }, 1000);
+    fetch(`/mock-data/${role}s.json`)
+      .then((res) => res.json())
+      .then(({ data }) => {
+        // will take the first user
+        localStorage.setItem(
+          "user",
+          JSON.stringify({
+            username: username.value,
+            role: role,
+            ...data[0],
+          })
+        );
+      })
+      .finally(() => {
+        setTimeout(() => {
+          navigate(0);
+        }, 1000);
+      });
   };
 
   const handleClickShowPassword = () => setShowPassword(!showPassword);

@@ -1,0 +1,44 @@
+{
+  "data": [
+    {
+      "name": "Dr. Jones, M.D.",
+      "speciality": "",
+      "address": "",
+      "distance": "2 miles",
+      "rate": "$119.50",
+      "rateConditions": ""
+    },
+    {
+      "name": "Dr. Joe, M.K.",
+      "speciality": "",
+      "address": "",
+      "distance": "2 miles",
+      "rate": "$99.50",
+      "rateConditions": "Mon-Thu 10A-2PM"
+    },
+    {
+      "name": "C. Hinkley, P.A.",
+      "speciality": "",
+      "address": "",
+      "distance": "3 miles",
+      "rate": "$89.50",
+      "rateConditions": ""
+    },
+    {
+      "name": "Dr. A. Patel, D.O.",
+      "speciality": "",
+      "address": "",
+      "distance": "4 miles",
+      "rate": "119.50",
+      "rateConditions": ""
+    },
+    {
+      "name": "Dr. Dogma, C.O.",
+      "speciality": "",
+      "address": "",
+      "distance": "6 miles",
+      "rate": "129.50",
+      "rateConditions": ""
+    }
+  ]
+}

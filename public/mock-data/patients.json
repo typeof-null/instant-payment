@@ -1,0 +1,36 @@
+{
+  "data": [
+    {
+      "name": "Jane Doe",
+      "date": "08/23/1985",
+      "memberId": "123456789*00",
+      "coPay": "$25.00",
+      "coInsurance": "80%",
+      "remainingDeductible": "$1,543.00"
+    },
+    {
+      "name": "Susan Leno",
+      "date": "11/01/1983",
+      "memberId": "293829347*01",
+      "coPay": "$50.00",
+      "coInsurance": "80%",
+      "remainingDeductible": "$0.00"
+    },
+    {
+      "name": "George Wynn",
+      "date": "04/12/1972",
+      "memberId": "582782323*02",
+      "coPay": "$20.00",
+      "coInsurance": "80%",
+      "remainingDeductible": "$1,987.00"
+    },
+    {
+      "name": "Greg Fiona",
+      "date": "05/27/1964",
+      "memberId": "482388321*01",
+      "coPay": "$0.00",
+      "coInsurance": "50%",
+      "remainingDeductible": "$3,123.00"
+    }
+  ]
+}

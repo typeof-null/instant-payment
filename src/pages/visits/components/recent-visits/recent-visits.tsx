@@ -15,10 +15,6 @@ import { withFloat } from "../../../../shared/utils/numbers";
 type Props = { visits: Visit[] };
 
 function RecentVisits({ visits }: Props) {
-  const commission = 25.0;
-
-  console.log(visits, "visits");
-
   return (
     <>
       <Box sx={{ width: "100%" }}>
@@ -98,7 +94,7 @@ function RecentVisits({ visits }: Props) {
                   visit.service.reduce(
                     (acc, cur) => acc + Number(cur.amount),
                     0
-                  ) + commission
+                  )
                 )}`}
               </Typography>
             </AccordionSummary>
@@ -185,6 +181,7 @@ function RecentVisits({ visits }: Props) {
                       <Typography
                         color="green"
                         align="right"
+                        fontSize={14}
                         sx={{
                           order: 3,
                           flexGrow: 3,
@@ -202,6 +199,7 @@ function RecentVisits({ visits }: Props) {
                 <ListItem>
                   <>
                     <Typography
+                      fontSize={14}
                       noWrap
                       sx={{
                         order: 0,
@@ -212,6 +210,7 @@ function RecentVisits({ visits }: Props) {
                       Total
                     </Typography>
                     <Typography
+                      fontSize={14}
                       align="right"
                       sx={{
                         order: 2,
@@ -223,6 +222,7 @@ function RecentVisits({ visits }: Props) {
                       0
                     )}`}</Typography>
                     <Typography
+                      fontSize={14}
                       color="green"
                       align="right"
                       sx={{

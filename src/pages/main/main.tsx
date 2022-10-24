@@ -19,16 +19,20 @@ function Main() {
 
   return (
     <>
-      <PatientBadge {...user} sx={{ marginBottom: "54px" }} />
-      <Typography
-        fontSize={18}
-        fontWeight={700}
-        color="text.primary"
-        textAlign="center"
-        sx={{ marginBottom: "20px" }}
-      >
-        {`Find ${user.role === ROLES.PATIENT ? "Doctor" : " Patient"}`}
-      </Typography>
+      {user?.role && (
+        <>
+          <PatientBadge {...user} sx={{ marginBottom: "54px" }} />
+          <Typography
+            fontSize={18}
+            fontWeight={700}
+            color="text.primary"
+            textAlign="center"
+            sx={{ marginBottom: "20px" }}
+          >
+            {`Find ${user?.role === ROLES.PATIENT ? "Doctor" : " Patient"}`}
+          </Typography>
+        </>
+      )}
       <FindDoctorWidget
         onPickDoctor={handlePickDoctor}
         sx={{ padding: "0 16px" }}

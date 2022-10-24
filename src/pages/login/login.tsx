@@ -1,4 +1,4 @@
-import { FormEvent, useState, useEffect } from "react";
+import { FormEvent, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
   Box,
@@ -23,7 +23,7 @@ function Login() {
     const [username, _, password] = e.target as unknown as HTMLInputElement[];
     e.preventDefault();
 
-    fetch(`/mock-data/${role}s.json`)
+    fetch(`/mock-data/${role.toLowerCase()}s.json`)
       .then((res) => res.json())
       .then(({ data }) => {
         // will take the first user

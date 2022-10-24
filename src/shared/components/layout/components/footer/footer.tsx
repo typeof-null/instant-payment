@@ -1,12 +1,23 @@
-import { Divider, Theme, Typography, useMediaQuery } from "@mui/material";
+import {
+  Box,
+  Divider,
+  Toolbar,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
+import { setMediaQuery } from "../../../../utils/queries";
+import Navigation from "../navigation";
 
-function Footer() {
-  const isSm = useMediaQuery((theme: Theme) => theme.breakpoints.down("sm"));
+type Props = {};
+
+function Footer({}: Props) {
+  const isSm = useMediaQuery(setMediaQuery("sm"));
 
   return (
     <>
       <Divider />
-      <footer
+      <Box
+        component="footer"
         style={{
           padding: isSm ? "15px" : "15px 30px",
           textAlign: "center",
@@ -17,7 +28,7 @@ function Footer() {
         <Typography variant="caption">
           {process.env.REACT_APP_VERSION}
         </Typography>
-      </footer>
+      </Box>
     </>
   );
 }

@@ -15,7 +15,13 @@ function TooltipWithOptions({ options, children, onClick }: Props) {
   const renderOptions = () => (
     <List onClick={onClick}>
       {options.map((option, index) => (
-        <ListItem key={index} title={option}>
+        <ListItem
+          key={index}
+          title={option}
+          sx={{
+            background: index % 2 === 0 ? "#FAFAFA" : "#fff",
+          }}
+        >
           {option}
         </ListItem>
       ))}
@@ -30,6 +36,9 @@ function TooltipWithOptions({ options, children, onClick }: Props) {
       placement="bottom-start"
       componentsProps={{
         tooltip: {
+          style: {
+            marginTop: "0",
+          },
           sx: {
             background: "#fff",
             color: "text.primary",

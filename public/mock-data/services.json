@@ -2,63 +2,78 @@
   "data": [
     {
       "category": "Office Visit",
-      "service": "Primary Care - New Patient"
+      "service": "Primary Care - New Patient",
+      "rate": "169"
     },
     {
       "category": "Office Visit",
-      "service": "Primary Care - Existing Patient"
+      "service": "Primary Care - Existing Patient",
+      "rate": "129"
     },
     {
       "category": "Office Visit",
-      "service": "Physical Checkup"
+      "service": "Physical Checkup",
+      "rate": "212"
     },
     {
       "category": "Office Visit",
-      "service": "Specialist Consultation"
+      "service": "Specialist Consultation",
+      "rate": "195"
     },
     {
       "category": "Lab & Diagnostics",
-      "service": "General Health Panel"
+      "service": "General Health Panel",
+      "rate": "120"
     },
     {
       "category": "Lab & Diagnostics",
-      "service": "Comprehensive Blood Panel"
+      "service": "Comprehensive Blood Panel",
+      "rate": "80"
     },
     {
       "category": "Lab & Diagnostics",
-      "service": "Urinalysis"
+      "service": "Urinalysis",
+      "rate": "55"
     },
     {
       "category": "Lab & Diagnostics",
-      "service": "Allergy Panel"
+      "service": "Allergy Panel",
+      "rate": "220"
     },
     {
       "category": "Procedures",
-      "service": "Colonoscopy - Preventive"
+      "service": "Colonoscopy - Preventive",
+      "rate": "1500"
     },
     {
       "category": "Procedures",
-      "service": "Colonoscopy - Diagnostic"
+      "service": "Colonoscopy - Diagnostic",
+      "rate": "1800"
     },
     {
       "category": "Procedures",
-      "service": "Anesthesia"
+      "service": "Anesthesia",
+      "rate": "900"
     },
     {
       "category": "Procedures",
-      "service": "Vaccination"
+      "service": "Vaccination",
+      "rate": "25"
     },
     {
       "category": "Radiology",
-      "service": "Mammography"
+      "service": "Mammography",
+      "rate": "980"
     },
     {
       "category": "Radiology",
-      "service": "MRI/MRE"
+      "service": "MRI/MRE",
+      "rate": "2300"
     },
     {
       "category": "Radiology",
-      "service": "CT Scan"
+      "service": "CT Scan",
+      "rate": "1700"
     }
   ]
 }

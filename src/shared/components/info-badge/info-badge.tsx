@@ -1,4 +1,3 @@
-import React from "react";
 import { Box, Typography } from "@mui/material";
 import { SxType } from "../../types";
 
@@ -8,6 +7,9 @@ type Props = {
   sx?: SxType;
 };
 function InfoBadge({ title, description, sx }: Props) {
+  const textSx = {
+    letterSpacing: 0,
+  };
   return (
     <Box
       display="flex"
@@ -18,13 +20,16 @@ function InfoBadge({ title, description, sx }: Props) {
         width: "100%",
         background: "#FAFAFA",
         borderRadius: "4px",
+        textAlign: "center",
         ...sx,
       }}
     >
-      <Typography fontSize="16px" fontWeight={700}>
+      <Typography fontSize="1rem" fontWeight={700} sx={textSx}>
         {title}
       </Typography>
-      <Typography fontSize="14px">{description}</Typography>
+      <Typography fontSize="14px" sx={textSx}>
+        {description}
+      </Typography>
     </Box>
   );
 }

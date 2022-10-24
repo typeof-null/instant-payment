@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import PatientBadge from "../../shared/components/patient-badge";
 import ProviderBadge from "../../shared/components/provider-badge";
 import { ServiceOption } from "../../shared/types";
-
 import ChooseService from "./components/choose-service";
 import Payment from "./components/payment";
 import { STEPS } from "./constants";
@@ -31,8 +30,8 @@ function InstantPayment() {
 
   const handleViewPaymentStep = () => setStep(STEPS.PAYMENT);
   const handleViewChoosenServiceStep = () => setStep(STEPS.CHOOSE_SERVICE);
-  const handeRedirectPayment = () =>
-    navigate("/payment", { state: { isProceed: true } });
+  const handeRedirectPayment = (sum: string) =>
+    navigate("/payment", { state: { sum, title: "Payment" } });
 
   const renderStep = () => {
     let render = (
@@ -60,7 +59,7 @@ function InstantPayment() {
   return (
     <>
       <PatientBadge {...user} sx={{ marginBottom: "60px" }} />
-      <ProviderBadge {...provider} sx={{ marginBottom: "45px" }} />
+      <ProviderBadge {...provider} sx={{ marginBottom: "15px" }} />
       {!!services.length && renderStep()}
     </>
   );

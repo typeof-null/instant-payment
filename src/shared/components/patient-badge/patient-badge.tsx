@@ -8,18 +8,19 @@ type Props = Patient & {
 
 function PatientBadge({ sx, name, date, memberId }: Props) {
   const renderText = (text: string): JSX.Element => (
-    <Typography fontWeight={700} sx={{ fontSize: "18px" }}>
+    <Typography fontWeight={700} sx={{ fontSize: "1rem" }}>
       {text}
     </Typography>
   );
 
   return (
-    <>
+    <Box component="section">
       <Typography
-        variant="h6"
+        fontSize="12px"
+
         fontWeight={600}
         color="text.primary"
-        sx={{ marginBottom: "10px", fontSize: "1rem" }}
+        sx={{ margin: "10px 10px 4px" }}
       >
         Patient
       </Typography>
@@ -39,7 +40,7 @@ function PatientBadge({ sx, name, date, memberId }: Props) {
         {renderText(`DOB ${date}`)}
         {renderText(memberId)}
       </Box>
-    </>
+    </Box>
   );
 }
 

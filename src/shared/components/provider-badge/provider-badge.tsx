@@ -10,10 +10,10 @@ function ProviderBadge({ name, speciality, address, sx }: Props) {
   return (
     <>
       <Typography
-        variant="h6"
+        fontSize="12px"
         fontWeight={600}
         color="text.primary"
-        sx={{ marginBottom: "10px", fontSize: "1rem" }}
+        sx={{ margin: "10px 10px 4px" }}
       >
         Provider
       </Typography>
@@ -33,14 +33,14 @@ function ProviderBadge({ name, speciality, address, sx }: Props) {
           justifyContent="space-between"
           sx={{ marginBottom: "10px" }}
         >
-          <Typography fontWeight={700} sx={{ fontSize: "18px" }}>
+          <Typography fontWeight={700} sx={{ fontSize: "1rem", width: "50%" }}>
             {name}
           </Typography>
-          <Typography fontWeight={700} sx={{ fontSize: "18px" }}>
+          <Typography fontWeight={700} noWrap sx={{ fontSize: "1rem" }}>
             {speciality}
           </Typography>
         </Box>
-        <Typography sx={{ fontSize: "16px" }}>{address}</Typography>
+        <Typography sx={{ fontSize: "14px" }}>{address}</Typography>
       </Box>
     </>
   );

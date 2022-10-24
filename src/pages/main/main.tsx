@@ -14,21 +14,25 @@ function Main() {
       localStorage.removeItem("provider");
     }
     localStorage.setItem("provider", JSON.stringify(doctor));
-    navigate("/payment");
+    navigate("/payment", { state: { title: "Payment" } });
   };
 
   return (
     <>
-      <PatientBadge {...user} sx={{ marginBottom: "60px" }} />
+      <PatientBadge {...user} sx={{ marginBottom: "54px" }} />
       <Typography
-        variant="h6"
+        fontSize={18}
         fontWeight={700}
         color="text.primary"
-        sx={{ margin: "0 auto 20px" }}
+        textAlign="center"
+        sx={{ marginBottom: "20px" }}
       >
         {`Find ${user.role === ROLES.PATIENT ? "Doctor" : " Patient"}`}
       </Typography>
-      <FindDoctorWidget onPickDoctor={handlePickDoctor} />
+      <FindDoctorWidget
+        onPickDoctor={handlePickDoctor}
+        sx={{ padding: "0 16px" }}
+      />
     </>
   );
 }

@@ -43,7 +43,7 @@ function FoundDoctorList({ list, sx, onPickDoctor }: Props) {
                   fontWeight={700}
                   sx={{ fontSize: "18px", color: "#008042" }}
                 >
-                  {rate}
+                  ${rate}
                 </Typography>
               </Box>
               <Box display="flex" justifyContent="space-between">

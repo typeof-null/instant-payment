@@ -10,15 +10,16 @@ import {
 import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import SearchIcon from "@mui/icons-material/Search";
 import dayjs, { Dayjs } from "dayjs";
-import { Provider, Speciality } from "../../../../shared/types";
+import { Provider, Speciality, SxType } from "../../../../shared/types";
 import FoundDoctorList from "../found-doctor-list";
 import SearchLocationInput from "./components/search-location-input";
 
 type Props = {
+  sx?: SxType;
   onPickDoctor: (doctor: Provider) => void;
 };
 
-function FindDoctorWidget({ onPickDoctor }: Props) {
+function FindDoctorWidget({ sx, onPickDoctor }: Props) {
   const [loading, setLoading] = useState(false);
   const [foundDoctors, setFoundDoctors] = useState<Provider[]>([]);
   const [specialities, setSpecialities] = useState<Speciality[]>();
@@ -38,8 +39,6 @@ function FindDoctorWidget({ onPickDoctor }: Props) {
     setSpeciality(value as Speciality);
 
   const handleSubmit = () => {
-    // console.log({ location, date, speciality }, "form");
-
     setLoading(true);
     setTimeout(() => {
       fetch("/mock-data/providers.json")
@@ -67,6 +66,9 @@ function FindDoctorWidget({ onPickDoctor }: Props) {
       component="form"
       autoComplete="off"
       width="100%"
+      sx={{
+        ...sx,
+      }}
     >
       <Box display="flex" sx={{ marginBottom: "10px" }}>
         <SearchLocationInput
@@ -115,6 +117,8 @@ function FindDoctorWidget({ onPickDoctor }: Props) {
             borderRadius: "16px",
             padding: "10px 16px",
             margin: "40px auto 0",
+            fontSize: "14px",
+            fontWeight: "500",
           }}
           startIcon={
             loading ? (

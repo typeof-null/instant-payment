@@ -1,40 +1,67 @@
-import { ReactNode } from "react";
-import Header from "./components/header";
-import Footer from "./components/footer";
+import { ReactNode, useEffect, useState } from "react";
 import { Box } from "@mui/material";
-
+import Header from "./components/header";
+import MobileFooter from "./components/mobile-footer";
 
 type Props = {
-  children: ReactNode;
+  children: ReactNode | ((isAuth: boolean) => ReactNode);
 };
-function Layout({ children }: Props) {
-  const isAuth = !!localStorage.getItem("user");
 
+function Layout({ children }: Props) {
+  const [auth, setAuth] = useState(false);
+
+  useEffect(() => {
+    const autorized = !!localStorage.getItem("user");
+    // check if in local storage exist user
+    setTimeout(() => {
+      setAuth(autorized);
+    }, 0);
+  }, []);
+
+  // was set for desktop
   const sx = {
-    ...(isAuth && {
-      display: "flex",
-      alignItems: "flex-start",
-      flexDirection: "column",
-      width: "60%",
-      margin: "0 auto",
-      padding: "20px",
-    }),
+    // ...(isAuth && {
+    //   display: "flex",
+    //   alignItems: "flex-start",
+    //   flexDirection: "column",
+    //   width: "60%",
+    //   margin: "0 auto",
+    //   padding: "20px",
+    // }),
   };
 
   return (
-    <>
-      <Header />
+    <Box
+      display="flex"
+      flexDirection="column"
+      justifyContent="flex-start"
+      alignItems="center"
+      sx={{
+        width: "416px",
+        height: "702px",
+        margin: "40px auto",
+        background: "#fff",
+        position: "relative",
+      }}
+    >
+      <Header isAuth={auth} isMobileApp />
       <Box
         component="main"
         sx={{
-          minHeight: "calc(85vh)",
-          ...sx
+          // minHeight: "calc(85vh)", for desktop
+          position: "relative",
+          overflowY: "scroll",
+          // height: "700px",
+          height: "100%",
+          width: "100%",
+          paddingBottom: "80px",
+          ...sx,
         }}
       >
-        {children}
+        {typeof children === "function" ? children(auth) : children}
       </Box>
-      <Footer />
-    </>
+      <MobileFooter isAuth={auth} />
+    </Box>
   );
 }
 

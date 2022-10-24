@@ -28,6 +28,9 @@ const theme = createTheme({
     grey: {
       A200: "#B6B6B6", // placeholder color
     },
+    background: {
+      default: "#aaa",
+    },
   },
   spacing: (factor: number = 1) => `${0.5 * factor}rem`, // 0.5 * 2rem = 1rem = 16px
   components: {

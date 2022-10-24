@@ -1,6 +1,6 @@
 import { MouseEvent } from "react";
 import { Box, Button, IconButton, Typography } from "@mui/material";
-import IosShareIcon from '@mui/icons-material/IosShare';
+import IosShareIcon from "@mui/icons-material/IosShare";
 import signalIcon from "../../icons/signal.svg";
 import visaIcon from "../../icons/visa.svg";
 import TooltipWithOptions from "../tooltip-wth-options";
@@ -88,12 +88,7 @@ function BankCard({
         </Box>
       </Box>
       {withOptions && (
-        <Box
-          display="flex"
-          sx={{
-            margin: "0 auto",
-          }}
-        >
+        <Box display="flex" justifyContent="center">
           <Button
             sx={{
               color: "#008042",
@@ -110,7 +105,7 @@ function BankCard({
             options={CARD_OPTIONS}
             onClick={handleClickOption}
           >
-            <IconButton >
+            <IconButton>
               <IosShareIcon sx={{ fontSize: "1.2rem" }} />
             </IconButton>
           </TooltipWithOptions>

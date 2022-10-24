@@ -13,10 +13,10 @@ function Payment() {
 
   return (
     <>
-      <PatientBadge {...user} sx={{ marginBottom: "60px" }} />
-      <ProviderBadge {...provider} sx={{ marginBottom: "45px" }} />
+      <PatientBadge {...user} sx={{ marginBottom: "44px" }} />
+      <ProviderBadge {...provider} sx={{ marginBottom: "44px" }} />
       <BankCard
-        amount="$124.99"
+        amount={`$${state?.sum ?? provider.rate}`}
         code="077"
         cardNumber="5555 1111 2222 3333 4444"
         inspiredDate="02/25"
@@ -24,8 +24,14 @@ function Payment() {
           margin: "0 auto",
         }}
       />
-      {state?.isProceed ? (
-        <Typography>
+      {state?.sum ? (
+        <Typography
+          fontSize={12}
+          sx={{
+            letterSpacing: 0,
+            margin: "0 30px"
+          }}
+        >
           By accepting the payment you agree not to balance bill the patient.
           Please bill payer for any additional services.
         </Typography>
@@ -34,7 +40,7 @@ function Payment() {
           title="Please use this card for payment to provider."
           description="Ask the provider to bill additional services to your insurance."
           sx={{
-            margin: "45px auto 0",
+            marginTop: "40px",
           }}
         />
       )}

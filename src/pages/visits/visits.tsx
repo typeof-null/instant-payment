@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PatientBadge from "../../shared/components/patient-badge";
 import ProviderBadge from "../../shared/components/provider-badge";
@@ -18,9 +18,7 @@ function Visits() {
       .then(({ data }) => setVisits(data));
   }, []);
 
-  console.log(visits, "visits");
-
-  const handleRedirectInstantPayment = () => navigate("/instant-payment");
+  const handleRedirectInstantPayment = () => navigate("/instant-payment", {state: {title: "Instant Payment"}});
 
   return (
     <>
@@ -31,11 +29,16 @@ function Visits() {
           <RecentVisits visits={visits} />
           <Button
             sx={{
+              display: "block",
               color: "#2C0777",
               background: "#EAEAEA",
               borderRadius: "16px",
-              padding: "10px 16px",
-              margin: "40px auto 0",
+              margin: "44px auto 0",
+              fontWeight: 600,
+              fontSize: "14px",
+              width: "95px",
+              padding: "0",
+              height: "40px",
             }}
             onClick={handleRedirectInstantPayment}
           >

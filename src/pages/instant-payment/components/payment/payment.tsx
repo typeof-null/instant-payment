@@ -9,30 +9,49 @@ import {
 import RefreshIcon from "@mui/icons-material/Refresh";
 import { ServiceOption } from "../../../../shared/types";
 import InfoBadge from "../../../../shared/components/info-badge";
+import { withFloat } from "../../../../shared/utils/numbers";
 
 type Props = {
   services: ServiceOption[];
-  onClick: () => void;
+  onClick: (sum: string) => void;
   onRefresh: () => void;
 };
 
 function Payment({ services, onClick, onRefresh }: Props) {
+  const sum = withFloat(
+    services.reduce((acc, cur) => acc + Number(cur.rate), 0)
+  );
 
-  const handleClickCallLink = () => console.log("%cDO CALL", "green")  
+  const handleClickCallLink = () => console.log("%cDO CALL", "green");
+  const handleProceedClick = () => onClick(sum);
+
   return (
     <>
       <Box display="flex" alignItems="center" sx={{ margin: "0 auto 20px" }}>
-        <Typography fontSize="20px" fontWeight={700}>
+        <Typography
+          fontSize="18px"
+          fontWeight={700}
+          textAlign="center"
+          sx={{
+            flex: 1,
+            marginLeft: "50px",
+          }}
+        >
           Payment
         </Typography>
-        <IconButton onClick={onRefresh}>
+        <IconButton
+          onClick={onRefresh}
+          sx={{
+            marginRight: "10px",
+          }}
+        >
           <RefreshIcon />
         </IconButton>
       </Box>
       <List
         sx={{
-          margin: "0 auto 20px",
-          width: "80%",
+          marginBottom: "20px",
+          padding: "0 20px",
         }}
       >
         {services.map(({ category, service }, index) => (
@@ -40,7 +59,8 @@ function Payment({ services, onClick, onRefresh }: Props) {
             key={index}
             sx={{
               background: index % 2 === 0 ? "#FAFAFA" : "#fff",
-              justifyContent: "center",
+              justifyContent: "flex-start",
+              padding: "0 10pxs",
             }}
           >{`${category} - ${service}`}</ListItem>
         ))}
@@ -51,7 +71,7 @@ function Payment({ services, onClick, onRefresh }: Props) {
         align="center"
         sx={{ color: "#008042", margin: "0 auto" }}
       >
-        $124.99
+        ${sum}
       </Typography>
       <InfoBadge
         title="The amount represents payment in full."
@@ -65,16 +85,26 @@ function Payment({ services, onClick, onRefresh }: Props) {
           color: "#2C0777",
           background: "#EAEAEA",
           borderRadius: "16px",
-          padding: "10px 16px",
-          margin: "20px auto 0",
+          margin: "0 auto",
+          fontWeight: 600,
+          fontSize: "14px",
+          display: "block",
+          width: "185px",
+          height: "40px",
         }}
-        onClick={onClick}
+        onClick={handleProceedClick}
       >
         Proceed to Payment
       </Button>
-      <Button onClick={handleClickCallLink} sx={{ color: "#008042", textDecoration: "underline",
-    margin: "20px auto 0",
-    }}>
+      <Button
+        sx={{
+          display: "block",
+          color: "#008042",
+          textDecoration: "underline",
+          margin: "10px auto 0",
+        }}
+        onClick={handleClickCallLink}
+      >
         Call us to discuss other options
       </Button>
     </>

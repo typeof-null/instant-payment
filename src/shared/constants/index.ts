@@ -53,9 +53,9 @@ export const SERVICES = {
 };
 
 export const ROLES = {
-  PATIENT: "patient",
-  PROVIDER: "provider",
-  PAYER: "payer",
+  PATIENT: "Patient",
+  PROVIDER: "Provider",
+  PAYER: "Payer",
 };
 
 export const PAID = {
@@ -66,4 +66,12 @@ export const PAID = {
 export const CARD_TYPES = {
   VISA: "visa",
   MASTER_CARD: "master card",
+};
+
+/** ROUTING */
+export const REDIRECT = {
+  BACK: -1,
+  DOBLE_BACK: -2,
+  FORWARD: 1,
+  DOUBLE_FORWARD: 2,
 };

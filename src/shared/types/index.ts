@@ -1,6 +1,7 @@
 import {
   CARD_TYPES,
   PAID,
+  REDIRECT,
   ROLES,
   SERVICES,
   SERVICE_CATEGORIES,
@@ -48,6 +49,7 @@ export type PaymentCard = {
 export type ServiceOption = {
   category: ServiceCategory;
   service: Service;
+  rate: string;
 };
 
 export type Role = typeof ROLES[keyof typeof ROLES];
@@ -62,3 +64,6 @@ export type CardType = typeof CARD_TYPES[keyof typeof CARD_TYPES];
 
 /** THEME TYPES **/
 export type SxType = SxProps<Theme>;
+
+/** ROUTING */
+export type Redirect = typeof REDIRECT[keyof typeof REDIRECT];

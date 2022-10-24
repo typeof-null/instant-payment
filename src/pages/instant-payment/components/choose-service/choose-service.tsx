@@ -26,19 +26,31 @@ function ChooseService({
   return (
     <>
       <Typography
-        fontSize="20px"
+        fontSize="18px"
         fontWeight={700}
-        sx={{ margin: "0 auto 20px" }}
+        textAlign="center"
+        sx={{ marginBottom: "10px" }}
       >
         Choose Service
       </Typography>
       <Autocomplete
         multiple
+        disablePortal
         options={services}
         disableCloseOnSelect
         groupBy={(option) => option.category}
         getOptionLabel={(option) => option.service}
-        style={{ width: "100%" }}
+        size="small"
+        style={{ width: "100%", display: "inline-table", padding: "0 20px" }}
+        sx={{
+          height: "46px",
+        }}
+        componentsProps={{
+          paper: {
+            style: { marginBottom: "80px", height: "256px" },
+          },
+        }}
+        // ListboxProps={{ style: { marginBottom: "80px" } }}
         onChange={onChange}
         renderOption={(props, option, { selected }) => (
           <li
@@ -46,6 +58,7 @@ function ChooseService({
             style={{
               display: "flex",
               alignItems: "center",
+              height: "44px",
             }}
           >
             <Checkbox
@@ -90,11 +103,16 @@ function ChooseService({
 
       <Button
         sx={{
+          fontSize: "14px",
+          display: "block",
           color: "#2C0777",
           background: "#EAEAEA",
           borderRadius: "16px",
-          padding: "10px 16px",
-          margin: "40px auto 0",
+          // padding: "10px 16px",
+          width: "95px",
+          height: "40px",
+          margin: "12px auto 0",
+          fontWeight: 600,
         }}
         disabled={disabledButton}
         onClick={onClick}

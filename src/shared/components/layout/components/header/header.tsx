@@ -1,56 +1,53 @@
-import React, { MouseEvent, useEffect, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import AccountCircle from "@mui/icons-material/AccountCircle";
-import {
-  List,
-  ListItem,
-  ListItemButton,
-  Theme,
-  Typography,
-  useMediaQuery,
-} from "@mui/material";
-import { NAVS } from "./constants";
-import { getNavIconSrc } from "./utils";
+import ArrowBackIos from "@mui/icons-material/ArrowBackIos";
+import { Typography, useMediaQuery } from "@mui/material";
+import { setMediaQuery } from "../../../../utils/queries";
+import Navigation from "../navigation";
+import { REDIRECT } from "../../../../constants";
+import { capitalizeFirstLetter } from "../../../../utils/letters";
 
-export default function Header() {
+type Props = {
+  isAuth: boolean;
+  isMobileApp?: boolean;
+};
+
+export default function Header({ isAuth, isMobileApp = false }: Props) {
   const navigate = useNavigate();
-  const { pathname } = useLocation();
-  const isSm = useMediaQuery((theme: Theme) => theme.breakpoints.down("sm"));
-  const [auth, setAuth] = useState(false);
+  const { state, pathname } = useLocation();
+  const isSm = useMediaQuery(setMediaQuery("sm"));
 
-  useEffect(() => {
-    const isAuth = !!localStorage.getItem("user");
-    // check if in local storage exist user
-    setTimeout(() => {
-      setAuth(isAuth);
-    }, 0);
-  }, []);
-
+  const handleRedirectBack = () => navigate(REDIRECT.BACK);
   const handleUnAuth = () => {
     // remove all from ls and reload page fro view login page
     localStorage.removeItem("user");
     localStorage.removeItem("provider");
     setTimeout(() => {
+      navigate("/");
       navigate(0);
     }, 1000);
   };
 
-  const handleRedirect = (e: MouseEvent<HTMLDivElement>) =>
-    navigate(`/${(e.target as HTMLDivElement).textContent?.toLowerCase()}`);
+  const isHome = pathname === "/home";
+  const isWelcome = pathname === "/";
 
-  const isPaymentPage = pathname.includes("payment");
-  const getNavList = (): string[] => {
-    let navList = NAVS;
-    if (auth) {
-      navList = ["Alerts", ...navList.filter((nav) => nav !== "Profile")];
-    }
-    if (isPaymentPage) {
-      navList = ["Visits", ...navList];
-    }
-    return navList;
+  const appSx = {
+    padding: "0 16px",
+    height: "52px",
+    ...(!isMobileApp && {
+      padding: isSm ? "0 15px" : "0 30px",
+    }),
+  };
+  const toolBarSx = {
+    ...(isMobileApp && {
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      height: "100%",
+    }),
   };
 
   return (
@@ -59,33 +56,42 @@ export default function Header() {
       elevation={0}
       component="header"
       color="primary"
-      sx={{ padding: isSm ? "0 15px" : "0 30px" }}
+      sx={appSx}
     >
-      <Toolbar component="nav" disableGutters>
-        <List
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            textAlign: "center",
-            margin: "0 auto",
-          }}
-        >
-          {getNavList().map((nav) => (
-            <ListItem key={nav} disablePadding>
-              <ListItemButton
-                sx={{ borderRadius: "16px" }}
-                onClick={handleRedirect}
+      <Toolbar
+        component="nav"
+        variant={isMobileApp ? "dense" : "regular"}
+        disableGutters
+        sx={toolBarSx}
+      >
+        {isMobileApp ? (
+          <>
+            {!isWelcome && !isHome && (
+              <IconButton
+                size="small"
+                sx={{ padding: 0 }}
+                onClick={handleRedirectBack}
               >
-                <img src={getNavIconSrc(nav)} alt={nav} />
-                <Typography fontWeight="500" sx={{ marginLeft: "8px" }}>
-                  {nav}
-                </Typography>
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-        {auth && (
-          <IconButton aria-label="user" onClick={handleUnAuth} color="inherit">
+                <ArrowBackIos fontSize="small" />
+              </IconButton>
+            )}
+
+            {!!state?.title && (
+              <Typography fontWeight={700} fontSize="1rem">
+                {state.title}
+              </Typography>
+            )}
+          </>
+        ) : (
+          <Navigation isAuth={isAuth} />
+        )}
+        {isAuth && (
+          <IconButton
+            aria-label="user"
+            onClick={handleUnAuth}
+            color="inherit"
+            sx={{ padding: 0 }}
+          >
             <AccountCircle fontSize="large" />
           </IconButton>
         )}

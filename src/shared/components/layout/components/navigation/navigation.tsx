@@ -69,7 +69,6 @@ function Navigation({ isAuth, isMobileApp, sx }: Props) {
             alt={nav}
             style={{
               pointerEvents: "none",
-              // marginBottom: nav === "Help" ? "4px" : 0,
             }}
           />
           <Typography

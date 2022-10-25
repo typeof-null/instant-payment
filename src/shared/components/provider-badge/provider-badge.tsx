@@ -37,10 +37,12 @@ function ProviderBadge({ name, speciality, address, sx }: Props) {
             {name}
           </Typography>
           <Typography fontWeight={700} noWrap sx={{ fontSize: "1rem" }}>
-            {speciality}
+            {speciality || "Primary Care"}
           </Typography>
         </Box>
-        <Typography sx={{ fontSize: "14px" }}>{address}</Typography>
+        <Typography sx={{ fontSize: "14px" }}>
+          {address || "Pleasantville, NY"}
+        </Typography>
       </Box>
     </>
   );

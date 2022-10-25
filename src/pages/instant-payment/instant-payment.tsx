@@ -10,7 +10,7 @@ import { Step } from "./types";
 
 function InstantPayment() {
   const navigate = useNavigate();
-  const user = JSON.parse(localStorage.getItem("user") as string);
+  const patient = JSON.parse(localStorage.getItem("patient") as string);
   const provider = JSON.parse(localStorage.getItem("provider") as string);
 
   const [step, setStep] = useState<Step>(STEPS.CHOOSE_SERVICE);
@@ -58,7 +58,7 @@ function InstantPayment() {
 
   return (
     <>
-      <PatientBadge {...user} sx={{ marginBottom: "60px" }} />
+      <PatientBadge {...patient} sx={{ marginBottom: "60px" }} />
       <ProviderBadge {...provider} sx={{ marginBottom: "15px" }} />
       {!!services.length && renderStep()}
     </>

@@ -8,12 +8,12 @@ import InfoBadge from "../../shared/components/info-badge";
 function Payment() {
   const { state } = useLocation();
 
-  const user = JSON.parse(localStorage.getItem("user") as string);
+  const patient = JSON.parse(localStorage.getItem("patient") as string);
   const provider = JSON.parse(localStorage.getItem("provider") as string);
 
   return (
     <>
-      <PatientBadge {...user} sx={{ marginBottom: "44px" }} />
+      <PatientBadge {...patient} sx={{ marginBottom: "44px" }} />
       <ProviderBadge {...provider} sx={{ marginBottom: "44px" }} />
       <BankCard
         amount={`$${state?.sum ?? provider.rate}`}

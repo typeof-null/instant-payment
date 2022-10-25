@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, useEffect, useState } from "react";
+import { SyntheticEvent, useEffect, useState } from "react";
 import {
   Autocomplete,
   Box,
@@ -40,20 +40,19 @@ function FindDoctorWidget({ sx, onPickDoctor }: Props) {
 
   const handleSubmit = () => {
     setLoading(true);
-    setTimeout(() => {
-      fetch("/mock-data/providers.json")
-        .then((res) => res.json())
-        .then(({ data }) =>
-          setFoundDoctors(
-            data.map((doctor: Provider) => ({
-              ...doctor,
-              speciality,
-              address: location,
-            }))
-          )
+
+    fetch("/mock-data/providers.json")
+      .then((res) => res.json())
+      .then(({ data }) =>
+        setFoundDoctors(
+          data.map((doctor: Provider) => ({
+            ...doctor,
+            speciality,
+            address: location,
+          }))
         )
-        .finally(() => setLoading(false));
-    }, 1000);
+      )
+      .finally(() => setLoading(false));
   };
 
   const disabled = !date || !location.length || !speciality.length;

@@ -15,13 +15,20 @@ function App() {
       <Layout>
         {(auth) => (
           <Routes>
-            <Route path="/" element={<Welcome />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/home" element={<Main />} />
-            <Route path="/payment" element={<Payment />} />
-            <Route path="/visits" element={<Visits />} />
-            <Route path="/instant-payment" element={<InstantPayment />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
+            {auth ? (
+              <>
+                <Route path="/" element={<Main />} />
+                <Route path="/payment" element={<Payment />} />
+                <Route path="/visits" element={<Visits />} />
+                <Route path="/instant-payment" element={<InstantPayment />} />
+                <Route path="*" element={<Navigate to="/" replace />} />
+              </>
+            ) : (
+              <>
+                <Route path="/" element={<Welcome />} />
+                <Route path="/login" element={<Login />} />
+              </>
+            )}
           </Routes>
         )}
       </Layout>

@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import PatientBadge from "../../shared/components/patient-badge";
-import ProviderBadge from "../../shared/components/provider-badge";
-import RecentVisits from "./components/recent-visits";
-import { Visit } from "../../shared/types";
 import { Button } from "@mui/material";
+import { Visit } from "../../shared/types";
+import ProviderBadge from "../../shared/components/provider-badge";
+import PatientBadge from "../../shared/components/patient-badge";
+import RecentVisits from "./components/recent-visits";
 
 function Visits() {
   const navigate = useNavigate();
-  const user = JSON.parse(localStorage.getItem("user") as string);
+  const patient = JSON.parse(localStorage.getItem("patient") as string);
   const provider = JSON.parse(localStorage.getItem("provider") as string);
   const [visits, setVisits] = useState<Visit[]>([]);
 
@@ -22,7 +22,7 @@ function Visits() {
 
   return (
     <>
-      <PatientBadge {...user} sx={{ marginBottom: "60px" }} />
+      <PatientBadge {...patient} sx={{ marginBottom: "60px" }} />
       <ProviderBadge {...provider} sx={{ marginBottom: "40px" }} />
       {!!visits.length && (
         <>

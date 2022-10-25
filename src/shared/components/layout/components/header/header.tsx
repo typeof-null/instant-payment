@@ -8,7 +8,6 @@ import { Typography, useMediaQuery } from "@mui/material";
 import { setMediaQuery } from "../../../../utils/queries";
 import Navigation from "../navigation";
 import { REDIRECT } from "../../../../constants";
-import { capitalizeFirstLetter } from "../../../../utils/letters";
 
 type Props = {
   isAuth: boolean;
@@ -23,7 +22,8 @@ export default function Header({ isAuth, isMobileApp = false }: Props) {
   const handleRedirectBack = () => navigate(REDIRECT.BACK);
   const handleUnAuth = () => {
     // remove all from ls and reload page fro view login page
-    localStorage.removeItem("user");
+    localStorage.removeItem("auth");
+    localStorage.removeItem("patient");
     localStorage.removeItem("provider");
     setTimeout(() => {
       navigate("/");
@@ -31,7 +31,7 @@ export default function Header({ isAuth, isMobileApp = false }: Props) {
     }, 1000);
   };
 
-  const isHome = pathname === "/home";
+  const isMain = pathname === "/" && isAuth;
   const isWelcome = pathname === "/";
 
   const appSx = {
@@ -66,7 +66,7 @@ export default function Header({ isAuth, isMobileApp = false }: Props) {
       >
         {isMobileApp ? (
           <>
-            {!isWelcome && !isHome && (
+            {!isWelcome && !isMain && (
               <IconButton
                 size="small"
                 sx={{ padding: 0 }}
@@ -75,22 +75,22 @@ export default function Header({ isAuth, isMobileApp = false }: Props) {
                 <ArrowBackIos fontSize="small" />
               </IconButton>
             )}
-
-            {!!state?.title && (
+            {isAuth && (
               <Typography fontWeight={700} fontSize="1rem">
-                {state.title}
+                {!!state?.title ? state.title : "Welcome"}
               </Typography>
             )}
           </>
         ) : (
           <Navigation isAuth={isAuth} />
         )}
+
         {isAuth && (
           <IconButton
             aria-label="user"
             onClick={handleUnAuth}
             color="inherit"
-            sx={{ padding: 0 }}
+            sx={{ padding: 0, marginLeft: !!state?.title ? 0 : "auto" }}
           >
             <AccountCircle fontSize="large" />
           </IconButton>

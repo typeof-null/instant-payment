@@ -16,7 +16,7 @@ function MobileFooter({ isAuth = false }: Props) {
         width: "100%",
         position: "absolute",
         bottom: 0,
-        zIndex: 10000,
+        zIndex: 2000,
       }}
     >
       <Navigation isAuth={isAuth} isMobileApp sx={{ height: "62px" }} />

@@ -19,6 +19,7 @@ function TooltipWithOptions({ options, children, onClick }: Props) {
           key={index}
           title={option}
           sx={{
+            cursor: "pointer",
             background: index % 2 === 0 ? "#FAFAFA" : "#fff",
           }}
         >
@@ -35,6 +36,11 @@ function TooltipWithOptions({ options, children, onClick }: Props) {
       onClick={handleClick}
       placement="bottom-start"
       componentsProps={{
+        popper: {
+          style: {
+            zIndex: 3000,
+          },
+        },
         tooltip: {
           style: {
             marginTop: "0",

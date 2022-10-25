@@ -7,10 +7,10 @@ import {
   ListItem,
   Typography,
 } from "@mui/material";
-import CheckIcon from "@mui/icons-material/Check";
 import { Visit } from "../../../../shared/types";
 import { PAID } from "../../../../shared/constants";
 import { withFloat } from "../../../../shared/utils/numbers";
+import checkbox from "../../../../shared/icons/checkbox.svg";
 
 type Props = { visits: Visit[] };
 
@@ -190,7 +190,11 @@ function RecentVisits({ visits }: Props) {
                         {service.paid === PAID.DEP ? (
                           "File"
                         ) : (
-                          <CheckIcon color="secondary" />
+                          <img
+                            src={checkbox}
+                            alt="checkbox"
+                            style={{ display: "block", marginLeft: "auto" }}
+                          />
                         )}
                       </Typography>
                     </>

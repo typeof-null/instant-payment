@@ -27,18 +27,17 @@ function Login() {
       .then((res) => res.json())
       .then(({ data }) => {
         // will take the first user
+        localStorage.setItem("auth", JSON.stringify({ role }));
         localStorage.setItem(
-          "user",
+          role.toLowerCase(),
           JSON.stringify({
             username: username.value,
-            role: role,
             ...data[0],
           })
         );
       })
       .finally(() => {
         setTimeout(() => {
-          navigate("/home", { state: { title: "Welcome" } });
           navigate(0);
         }, 1000);
       });

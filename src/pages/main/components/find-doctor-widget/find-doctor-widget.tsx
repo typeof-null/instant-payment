@@ -1,18 +1,12 @@
-import { SyntheticEvent, useEffect, useState } from "react";
-import {
-  Autocomplete,
-  Box,
-  Button,
-  CircularProgress,
-  FormControl,
-  TextField,
-} from "@mui/material";
+import { SyntheticEvent, useState } from "react";
+import { Box, Button, CircularProgress, TextField } from "@mui/material";
 import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import SearchIcon from "@mui/icons-material/Search";
 import dayjs, { Dayjs } from "dayjs";
 import { Provider, Speciality, SxType } from "../../../../shared/types";
 import FoundDoctorList from "../found-doctor-list";
 import SearchLocationInput from "./components/search-location-input";
+import SpecialityInput from "../../../../shared/components/specialities-input";
 
 type Props = {
   sx?: SxType;
@@ -22,16 +16,9 @@ type Props = {
 function FindDoctorWidget({ sx, onPickDoctor }: Props) {
   const [loading, setLoading] = useState(false);
   const [foundDoctors, setFoundDoctors] = useState<Provider[]>([]);
-  const [specialities, setSpecialities] = useState<Speciality[]>();
   const [speciality, setSpeciality] = useState<Speciality>("");
   const [date, setDate] = useState<Dayjs | null>(dayjs());
   const [location, setLocation] = useState("");
-
-  useEffect(() => {
-    fetch("/mock-data/specialities.json")
-      .then((res) => res.json())
-      .then(({ data }) => setSpecialities(data));
-  }, []);
 
   const handleChangeDate = (newValue: Dayjs | null) => setDate(newValue);
   const handlePickLocation = (location: string) => setLocation(location);
@@ -82,25 +69,14 @@ function FindDoctorWidget({ sx, onPickDoctor }: Props) {
           value={date}
           disabled={!!foundDoctors.length}
           onChange={handleChangeDate}
-          renderInput={(params: any) => <TextField {...params} />}
+          renderInput={(params) => <TextField {...params} size="small" />}
         />
       </Box>
-      <FormControl fullWidth>
-        <Autocomplete
-          id="specialities"
-          options={specialities ?? []}
-          disablePortal
-          onChange={handlePickSpeciality}
-          noOptionsText="No found"
-          disabled={!!foundDoctors.length}
-          renderInput={(params) => (
-            <TextField
-              {...params}
-              placeholder="Find provider by speciality ..."
-            />
-          )}
-        />
-      </FormControl>
+
+      <SpecialityInput
+        onChange={handlePickSpeciality}
+        disabled={!!foundDoctors.length}
+      />
 
       {foundDoctors.length ? (
         <FoundDoctorList

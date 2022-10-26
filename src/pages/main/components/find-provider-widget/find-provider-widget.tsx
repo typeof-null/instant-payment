@@ -1,42 +1,43 @@
-import { ChangeEvent, MouseEvent, useState } from "react";
+import { ChangeEvent, MouseEvent, SyntheticEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Dayjs } from "dayjs";
 import {
   Box,
   Button,
+  CircularProgress,
+  FormControl,
+  InputAdornment,
+  OutlinedInput,
   TextField,
   Typography,
-  CircularProgress,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { Speciality } from "../../../../shared/types";
+import SpecialityInput from "../../../../shared/components/specialities-input";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
 
-type Props = {
-  onFound?: () => void;
-};
-function FindPatientWidget({ onFound }: Props) {
+function FindProviderWidget() {
   const navigation = useNavigate();
   const [loading, setLoading] = useState(false);
-  const [id, setId] = useState("");
-  const [birthDay, setBirthDay] = useState<Dayjs | null>(null);
-  const [lastName, setLastName] = useState("");
+  const [name, setName] = useState(""); // provider name, npi, tax ID
+  const [speciality, setSpeciality] = useState<Speciality>("");
+  const [location, setLocation] = useState("");
 
-  const handleChangeMemberID = (e: ChangeEvent<HTMLInputElement>) =>
-    setId(e.target.value);
-  const handleChangeLastName = (e: ChangeEvent<HTMLInputElement>) =>
-    setLastName(e.target.value);
-  const handleChangeBirthDay = (newValue: Dayjs | null) =>
-    setBirthDay(newValue);
+  const handleChangeName = (e: ChangeEvent<HTMLInputElement>) =>
+    setName(e.target.value);
+  const handleChangeSpeciality = (e: SyntheticEvent, value: any) =>
+    setSpeciality(value as Speciality);
+  const handleChangeLocation = (e: ChangeEvent<HTMLInputElement>) =>
+    setLocation(e.target.value);
 
   const handleSubmit = (e: MouseEvent) => {
     e.preventDefault();
     setLoading(true);
 
-    fetch("mock-data/patients.json")
+    fetch("mock-data/providers.json")
       .then((res) => res.json())
       .then(({ data }) => {
         localStorage.setItem(
-          "patient",
+          "provider",
           JSON.stringify({
             ...data[0],
           })
@@ -44,15 +45,11 @@ function FindPatientWidget({ onFound }: Props) {
       })
       .finally(() => {
         setLoading(false);
-        if (onFound) {
-          onFound();
-          return;
-        }
         navigation("/visits", { state: { title: "Visits" } });
       });
   };
 
-  const disabled = !id.length && (!birthDay || !lastName.length);
+  const disabled = !name.length && (!speciality.length || !location.length);
 
   return (
     <Box
@@ -66,7 +63,7 @@ function FindPatientWidget({ onFound }: Props) {
       sx={{ padding: "0 20px", width: "100%" }}
     >
       <TextField
-        label="Member ID"
+        label="Provider Name, NPI or Tax ID "
         variant="outlined"
         sx={{ marginBottom: "20px", width: "100%" }}
         size="small"
@@ -75,8 +72,9 @@ function FindPatientWidget({ onFound }: Props) {
             color: "#A0A0A0",
           },
         }}
-        onChange={handleChangeMemberID}
+        onChange={handleChangeName}
       />
+
       <Typography
         fontSize="1rem"
         fontWeight={700}
@@ -86,36 +84,26 @@ function FindPatientWidget({ onFound }: Props) {
       >
         - or -
       </Typography>
-      <TextField
-        label="Enter patient’s last name"
-        variant="outlined"
-        size="small"
-        sx={{ marginBottom: "12px", width: "100%" }}
-        onChange={handleChangeLastName}
-        InputLabelProps={{
-          style: {
-            color: "#A0A0A0",
-          },
-        }}
+
+      <SpecialityInput
+        onChange={handleChangeSpeciality}
+        sx={{ marginBottom: "12px" }}
       />
-      <DatePicker
-        label="Enter patient’s last name"
-        value={birthDay}
-        disableFuture
-        onChange={handleChangeBirthDay}
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            sx={{ width: "100%", color: "#A0A0A0" }}
-            size="small"
-            InputLabelProps={{
-              style: {
-                color: "#A0A0A0",
-              },
-            }}
-          />
-        )}
-      />
+
+      <FormControl variant="outlined" aria-label="location" fullWidth>
+        <OutlinedInput
+          size="small"
+          type="text"
+          placeholder="City, state, or zip code"
+          value={location}
+          onChange={handleChangeLocation}
+          endAdornment={
+            <InputAdornment position="end">
+              <LocationOnIcon />
+            </InputAdornment>
+          }
+        />
+      </FormControl>
 
       <Button
         sx={{
@@ -143,4 +131,4 @@ function FindPatientWidget({ onFound }: Props) {
   );
 }
 
-export default FindPatientWidget;
+export default FindProviderWidget;

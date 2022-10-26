@@ -12,6 +12,7 @@ import {
   Typography,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { ROLES } from "../../shared/constants";
 
 function Login() {
   const navigate = useNavigate();
@@ -23,24 +24,37 @@ function Login() {
     const [username, _, password] = e.target as unknown as HTMLInputElement[];
     e.preventDefault();
 
-    fetch(`/mock-data/${role.toLowerCase()}s.json`)
-      .then((res) => res.json())
-      .then(({ data }) => {
-        // will take the first user
-        localStorage.setItem("auth", JSON.stringify({ role }));
-        localStorage.setItem(
-          role.toLowerCase(),
-          JSON.stringify({
-            username: username.value,
-            ...data[0],
-          })
-        );
-      })
-      .finally(() => {
-        setTimeout(() => {
-          navigate(0);
-        }, 1000);
-      });
+    if (role === ROLES.PAYER) {
+      localStorage.setItem("auth", JSON.stringify({ role }));
+      localStorage.setItem(
+        role.toLowerCase(),
+        JSON.stringify({
+          username: username.value,
+        })
+      );
+      setTimeout(() => {
+        navigate(0);
+      }, 2000);
+    } else {
+      fetch(`/mock-data/${role.toLowerCase()}s.json`)
+        .then((res) => res.json())
+        .then(({ data }) => {
+          // will take the first user
+          localStorage.setItem("auth", JSON.stringify({ role }));
+          localStorage.setItem(
+            role.toLowerCase(),
+            JSON.stringify({
+              username: username.value,
+              ...data[0],
+            })
+          );
+        })
+        .finally(() => {
+          setTimeout(() => {
+            navigate(0);
+          }, 1000);
+        });
+    }
   };
 
   const labelSx = {

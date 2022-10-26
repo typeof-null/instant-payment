@@ -25,6 +25,7 @@ export default function Header({ isAuth, isMobileApp = false }: Props) {
     localStorage.removeItem("auth");
     localStorage.removeItem("patient");
     localStorage.removeItem("provider");
+    localStorage.removeItem("payer");
     setTimeout(() => {
       navigate("/");
       navigate(0);

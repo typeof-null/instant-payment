@@ -7,13 +7,15 @@ function ProviderContent() {
 
   return (
     <>
-      <ProviderBadge {...provider} sx={{ marginBottom: "35px" }} />
+      {provider && (
+        <ProviderBadge {...provider} sx={{ marginBottom: "35px" }} />
+      )}
       <Typography
         fontSize={18}
         fontWeight={700}
         color="text.primary"
         textAlign="center"
-        sx={{ marginBottom: "28px" }}
+        sx={{ marginBottom: "28px", marginTop: !!provider ? 0 : "119px" }}
       >
         Find Patient
       </Typography>

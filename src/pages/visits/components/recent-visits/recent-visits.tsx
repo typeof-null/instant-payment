@@ -7,6 +7,7 @@ import {
   ListItem,
   Typography,
 } from "@mui/material";
+import EventIcon from "@mui/icons-material/Event";
 import { Visit } from "../../../../shared/types";
 import { PAID } from "../../../../shared/constants";
 import { withFloat } from "../../../../shared/utils/numbers";
@@ -18,15 +19,25 @@ function RecentVisits({ visits }: Props) {
   return (
     <>
       <Box sx={{ width: "100%" }}>
-        <Box display="flex" justifyContent="space-between">
+        <Box
+          display="flex"
+          justifyContent="space-between"
+          sx={{ padding: "0 10px" }}
+        >
           <Typography
             fontSize="12px"
             fontWeight={600}
             color="text.primary"
-            sx={{ margin: "10px 10px 4px" }}
+            sx={{ marginTop: "8px" }}
           >
             Recent Visits
           </Typography>
+          <Box display="flex" sx={{ marginBottom: "8px" }}>
+            <Typography fontSize="14px" sx={{ marginRight: "10px" }}>
+              08/01/22 - Today
+            </Typography>
+            <EventIcon />
+          </Box>
         </Box>
 
         {visits.map((visit, index) => (

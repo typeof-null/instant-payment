@@ -18,7 +18,7 @@ function PatientContent() {
 
   return (
     <>
-      <PatientBadge {...patient} sx={{ marginBottom: "54px" }} />
+      {patient && <PatientBadge {...patient} sx={{ marginBottom: "54px" }} />}
       <Typography
         fontSize={18}
         fontWeight={700}

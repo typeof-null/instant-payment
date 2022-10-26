@@ -70,6 +70,7 @@ function SearchLocationInput({ value, disabled = false, sx, onClick }: Props) {
         disabled={disabled}
       >
         <OutlinedInput
+          size="small"
           id="outlined-adornment-password"
           type="text"
           placeholder="Pleasantville, ST"

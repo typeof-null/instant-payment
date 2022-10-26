@@ -14,7 +14,7 @@ function PayerContent() {
   let title = "Patient";
   let renderStep = <FindPatientWidget onFound={handleFoundPatient} />;
   if (step === ROLES.PROVIDER) {
-    title = "Patient";
+    title = "Provider";
     renderStep = <FindProviderWidget />;
   }
   return (

@@ -232,10 +232,10 @@ function RecentVisits({ visits }: Props) {
                         flexGrow: 2,
                         width: "115px",
                       }}
-                    >{`$${visit.service.reduce(
+                    >{`$${withFloat(visit.service.reduce(
                       (acc, cur) => acc + Number(cur.amount),
                       0
-                    )}`}</Typography>
+                    ))}`}</Typography>
                     <Typography
                       fontSize={14}
                       color="green"

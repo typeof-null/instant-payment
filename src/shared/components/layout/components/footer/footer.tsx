@@ -1,12 +1,10 @@
 import {
   Box,
   Divider,
-  Toolbar,
   Typography,
   useMediaQuery,
 } from "@mui/material";
 import { setMediaQuery } from "../../../../utils/queries";
-import Navigation from "../navigation";
 
 type Props = {};
 

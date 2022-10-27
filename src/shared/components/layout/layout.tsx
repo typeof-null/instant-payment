@@ -1,13 +1,15 @@
 import { ReactNode, useEffect, useState } from "react";
-import { Box } from "@mui/material";
+import { Box, useMediaQuery } from "@mui/material";
 import Header from "./components/header";
 import MobileFooter from "./components/mobile-footer";
+import { setMediaQuery } from "../../utils/queries";
 
 type Props = {
   children: ReactNode | ((isAuth: boolean) => ReactNode);
 };
 
 function Layout({ children }: Props) {
+  const isMobileSize = useMediaQuery(setMediaQuery());
   const [auth, setAuth] = useState(false);
 
   useEffect(() => {
@@ -18,19 +20,26 @@ function Layout({ children }: Props) {
     }, 0);
   }, []);
 
+  const sx = {
+    width: "416px",
+    height: "702px",
+    margin: "40px auto",
+    background: "#fff",
+    position: "relative",
+    ...(isMobileSize && {
+      width: "100%",
+      margin: 0,
+      height: "100vh",
+    }),
+  };
+
   return (
     <Box
       display="flex"
       flexDirection="column"
       justifyContent="flex-start"
       alignItems="center"
-      sx={{
-        width: "416px",
-        height: "702px",
-        margin: "40px auto",
-        background: "#fff",
-        position: "relative",
-      }}
+      sx={sx}
     >
       <Header isAuth={auth} isMobileApp />
       <Box

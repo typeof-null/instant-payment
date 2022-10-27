@@ -1,4 +1,4 @@
-import React, { MouseEvent, ReactElement, useState } from "react";
+import { MouseEvent, ReactElement, useState } from "react";
 import { List, ListItem, Tooltip } from "@mui/material";
 
 type Props = {
@@ -34,7 +34,7 @@ function TooltipWithOptions({ options, children, onClick }: Props) {
       open={open}
       title={renderOptions()}
       onClick={handleClick}
-      placement="bottom-start"
+      placement={"bottom-start"}
       componentsProps={{
         popper: {
           style: {

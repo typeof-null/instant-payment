@@ -60,7 +60,7 @@ function Payment({ services, onClick, onRefresh }: Props) {
             sx={{
               background: index % 2 === 0 ? "#FAFAFA" : "#fff",
               justifyContent: "flex-start",
-              padding: "0 10pxs",
+              padding: "10px",
             }}
           >{`${category} - ${service}`}</ListItem>
         ))}

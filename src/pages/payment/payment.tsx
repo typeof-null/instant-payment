@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import { Box, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import ProviderBadge from "../../shared/components/provider-badge";
 import PatientBadge from "../../shared/components/patient-badge";
 import BankCard from "../../shared/components/bank-card";
@@ -29,7 +29,7 @@ function Payment() {
           fontSize={12}
           sx={{
             letterSpacing: 0,
-            margin: "0 30px"
+            margin: "0 30px",
           }}
         >
           By accepting the payment you agree not to balance bill the patient.

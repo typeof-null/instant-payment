@@ -21,7 +21,7 @@ function Login() {
 
   const handleClickShowPassword = () => setShowPassword(!showPassword);
   const handleSubmit = (e: FormEvent) => {
-    const [username, _, password] = e.target as unknown as HTMLInputElement[];
+    const [username] = e.target as unknown as HTMLInputElement[];
     e.preventDefault();
 
     if (role === ROLES.PAYER) {

@@ -99,7 +99,7 @@ function FindPatientWidget({ onFound }: Props) {
         }}
       />
       <DatePicker
-        label="Enter patient’s last name"
+        label="Enter patient’s date of birth"
         value={birthDay}
         disableFuture
         onChange={handleChangeBirthDay}

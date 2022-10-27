@@ -1,5 +1,5 @@
-import { Typography } from "@mui/material";
 import { useState } from "react";
+import { Typography } from "@mui/material";
 import PatientBadge from "../../../../shared/components/patient-badge";
 import { ROLES } from "../../../../shared/constants";
 import FindPatientWidget from "../find-patient-widget";

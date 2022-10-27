@@ -6,16 +6,20 @@ import {
   List,
   ListItem,
   Typography,
+  useMediaQuery,
 } from "@mui/material";
 import EventIcon from "@mui/icons-material/Event";
 import { Visit } from "../../../../shared/types";
 import { PAID } from "../../../../shared/constants";
 import { withFloat } from "../../../../shared/utils/numbers";
 import checkbox from "../../../../shared/icons/checkbox.svg";
+import { setMediaQuery } from "../../../../shared/utils/queries";
 
 type Props = { visits: Visit[] };
 
 function RecentVisits({ visits }: Props) {
+  const isMobileSize = useMediaQuery(setMediaQuery());
+
   return (
     <>
       <Box sx={{ width: "100%" }}>
@@ -128,8 +132,7 @@ function RecentVisits({ visits }: Props) {
                     sx={{
                       order: 0,
                       flexGrow: 1,
-
-                      width: "195px",
+                      width: isMobileSize ? "171px" : "195px",
                     }}
                   >
                     Description
@@ -174,7 +177,7 @@ function RecentVisits({ visits }: Props) {
                         sx={{
                           order: 0,
                           flexGrow: 1,
-                          width: "195px",
+                          width: isMobileSize ? "171px" : "195px",
                         }}
                       >
                         {service.name}
@@ -219,7 +222,7 @@ function RecentVisits({ visits }: Props) {
                       sx={{
                         order: 0,
                         flexGrow: 1,
-                        width: "195px",
+                        width: isMobileSize ? "171px" : "195px",
                       }}
                     >
                       Total
@@ -232,10 +235,12 @@ function RecentVisits({ visits }: Props) {
                         flexGrow: 2,
                         width: "115px",
                       }}
-                    >{`$${withFloat(visit.service.reduce(
-                      (acc, cur) => acc + Number(cur.amount),
-                      0
-                    ))}`}</Typography>
+                    >{`$${withFloat(
+                      visit.service.reduce(
+                        (acc, cur) => acc + Number(cur.amount),
+                        0
+                      )
+                    )}`}</Typography>
                     <Typography
                       fontSize={14}
                       color="green"
